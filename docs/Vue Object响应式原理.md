@@ -22,9 +22,36 @@
 
 ## 收集依赖
 
-之所以要观察数据是因为要在数据发生变化后通知到使用数据的地方。所以我们先收集依赖，然后在数据发生变化时把收集到的依赖循环触发一遍。总结起来就是在getter中收集依赖，在setter中触发依赖。就是实现一个消息订阅器，在getter中收集订阅者，在setter中通知订阅者。
+之所以要观察数据是因为要在数据发生变化后通知到使用数据的地方。所以我们先收集依赖，然后在数据发生变化时把收集到的依赖循环触发一遍。总结起来就是在getter中收集依赖，在setter中触发依赖。就是实现一个消息订阅器，在getter中收集订阅者，在setter中通知订阅者。构建一个dep类，专门用于管理依赖。
 
 ``` 
+class Dep {
+  constructor() {
+    this.subs = []
+  }
+  addSub(sub) {
+    this.subs.push(sub)
+  }
+  removeSub(sub) {
+    if (this.subs.length) {
+      const index = this.subs.indexOf(sub)
+      if (index > -1) {
+        this.subs.splice(index, 1)
+      }
+    }
+  }
+  depend() {
+    if (window.target) { // window.target相当于一个全局临时变量，用来存储watch实例
+      this.addSub(window.target)
+    }
+  }
+  notify() {
+    const subs = this.subs.slice()
+    for (let i = 0, l = subs.length; i < l; i++) {
+      subs[i].update()
+    }
+  }
+}
 
 ```
 

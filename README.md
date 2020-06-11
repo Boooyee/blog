@@ -10,3 +10,5 @@
 [节流](./docs/节流.md)
 
 [面试](./docs/面试.md)
+
+[封装AJAX](./docs/AJAX.md)

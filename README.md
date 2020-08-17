@@ -3,12 +3,8 @@
 ---
 ## 目录
 
-[Object响应式原理](./docs/Object响应式原理.md)
-
 [防抖](./docs/防抖.md)
 
 [节流](./docs/节流.md)
-
-[面试](./docs/面试.md)
 
 [封装AJAX](./docs/AJAX.md)

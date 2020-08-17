@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+
+    // const SymbolPolyfill = function (description) {
+    //   if (this instanceof SymbolPolyfill) throw new TypeError('Symbol is not a constructor')
+
+    //   let descString
+    //   description === undefined ? descString = undefined : descString = String(description)
+
+    //   let symbol = Object.create(SymbolPolyfill.prototype)
+
+    //   defineProperties(symbol, {
+    //     __Description__: d('c', descString),
+    //     __Name__: d('c', generateName(descString)),
+    //   })
+
+    //   return symbol
+    // }
+
+
+    // const scores = [
+    //   { score: 90, subject: "chinese", weight: 0.5 },
+    //   { score: 95, subject: "math", weight: 0.3 },
+    //   { score: 85, subject: "english", weight: 0.2 }
+    // ];
+
+    // let result = scores.reduce((t, v) => t + v.score * v.weight, 0)
+
+    // function Reverse(arr = []) {
+    //   return arr.reduce((t, v) => (t.unshift(v), t), [])
+    // }
+
+    // function Reverse(arr = []) {
+    //   return arr.reduceRight((t, v) => (t.push(v),t), []);
+    // }
+
+    // console.log(Reverse([1, 2, 3, 4, 5]))
+
+
+    // 代替map：[0, 2, 4, 6]
+    // const a = arr.map(v => v * 2);
+
+    // let a1 = arr.reduce((t, v) => (t.push(v * 2), t), [])
+
+    // let a2 = arr.reduce((t, v) => (v > 1 ? t.push(v) : '', t), [])
+
+    // 代替some和every
+    // const scores = [
+    //   { score: 45, subject: "chinese" },
+    //   { score: 90, subject: "math" },
+    //   { score: 60, subject: "english" }
+    // ];
+    // let a3 = scores.reduce((t, v) => t || v.score >= 60, false)
+
+    // let a4 = scores.reduce((t, v) => t && v.score >= 60, false)
+
+    // const arr = [1, 2, 3, 4, 5];
+    // Chunk(arr, 2); // [[1, 2], [3, 4], [5]]
+
+    // function chunk(arr, len) {
+    //   return arr.length ? arr.reduce((t, v) => {
+    //     return t[t.length - 1].length === len ? (t.push([v]), t) : (t[t.length - 1].push(v), t)
+    //   }, [[]]) : []
+    // }
+
+    // let sss = chunk(arr, 3)
+
+
+    // function Chunk(arr = [], size = 1) {
+    //   return arr.length ? arr.reduce((t, v) => (t[t.length - 1].length === size ? t.push([v]) : t[t.length - 1].push(v), t), [[]]) : [];
+    // }
+
+    // // 数组过滤
+    // function difference(arr = [], old = []) {
+    //   return arr.reduce((t, v) => (old.includes(v) ? '' : t.push(v), t), [])
+    // }
+    // let arr1 = [1, 2, 3, 4, 5];
+    // let arr2 = [2, 3, 6]
+
+    // let b = difference(arr1, arr2)
+
+    // function flat1(arr) {
+    //   return arr.reduce((t, v) => (Array.isArray(v) ? t.push(...flat1(v)) : t.push(v), t), [])
+    // }
+
+    // function uniq(arr){
+    //   return arr.reduce((t,v) => (t.includes(v) ? '' : t.push(v),t) ,[])
+
+    // }
+    // console.log(uniq(arr))
+
+    // function minMax(arr) {
+    //   return arr.reduce((t, v) => {
+    //     t.max = v > t.max ? v : t.max
+    //     t.min = v < t.min ? v : t.min
+    //     return t
+    //   }, { min: +Infinity, max: -Infinity })
+    // }
+    // let arr = [12, 45, 21, 65, 38, 76, 108, 43];
+    // console.log(minMax(arr))
+
+    // const arr = [["a", 1, true], ["b", 2, false]];
+    // console.log(Unzip(arr)) // [["a", "b"], [1, 2], [true, false]]
+
+    // function Unzip(arr){
+    //   return arr.reduce((t,v) => {
+    //     v.forEach((e,index) => {
+    //       if(!t[index]) t[index] = []
+    //       t[index].push(e)
+    //     });
+    //     return t
+    //   },[])
+    // }
+
+    // let arr = [0, 1, 1, 2, 2, 2];
+
+    // function Count(arr) {
+    //   return arr.reduce((t, v) => { !t[v] ? t[v] = 1 : t[v] += 1;return t }, {})
+    // }
+    // console.log(Count(arr))
+
+    // function position(arr,num) {
+    //   return arr.reduce((t, v, i) => (v === num && t.push(i), t), [])
+    // }
+    // let arr = [2, 1, 5, 4, 2, 1, 6, 6, 7];
+    // console.log(position(arr, 2))
+
+    // let arr = [
+    //   { area: "GZ", name: "YZW", age: 27 },
+    //   { area: "GZ", name: "TYJ", age: 25 },
+    //   { area: "SZ", name: "AAA", age: 23 },
+    //   { area: "FS", name: "BBB", age: 21 },
+    //   { area: "SZ", name: "CCC", age: 19 }
+    // ];
+    // console.log(Group(arr, "area"))
+    // function Group(arr, key) {
+    //   return arr.reduce((t, v) => (!t[v[key]] && (t[v[key]] = []), t[v[key]].push(v), t), {})
+    // }
+
+    // const text = [
+    //   "今天天气真好，我想出去钓鱼",
+    //   "我一边看电视，一边写作业",
+    //   "小明喜欢同桌的小红，又喜欢后桌的小君，真TM花心",
+    //   "最近上班喜欢摸鱼的人实在太多了，代码不好好写，在想入非非"
+    // ];
+    // const keyword = ["偷懒", "喜欢", "睡觉", "摸鱼", "真好", "一边", "明天"];
+    // console.log(Keyword(text, keyword)); // ["喜欢", "摸鱼", "真好", "一边"]
+
+    // function Keyword(text,arr){
+    //   return arr.reduce((t,v) => (text.some(item => item.includes(v))&& t.push(v),t),[])
+    // }
+
+    // const str = "reduce最牛逼";
+    // console.log(ReverseStr(str)); // "逼牛最ecuder"
+
+    // function ReverseStr(arr) {
+    //   return arr.split('').reduce((t, v) => v + t)
+    // }
+
+    // 斐波那契数列
+    // function Fibonacci(len = 2) {
+    //   const arr = [... (new Array(len)).keys()]
+    //   return arr.reduce((t, v, i) => (i > 1 && t.push(t[i - 1] + t[i - 2]), t), [0, 1])
+    // }
+
+    // let ds = Fibonacci(5)
+
+    // const target = { a: 1, b: 2, c: 3, d: 4 };
+    // const keyword = ["a", "d"];
+    // console.log(GetKeys(target, keyword)) 
+
+    // function GetKeys(target, keyword) {
+    //   return keyword.reduce((t, v) => (target[v] && (t[v] = target[v]), t), {})
+    // }
+
+    // const people = [
+    //   { area: "GZ", name: "YZW", age: 27 },
+    //   { area: "SZ", name: "TYJ", age: 25 }
+    // ];
+    // let map = people.reduce((t,v)=>{
+    //   let {name,...rest} = v
+    //   t[name] = rest
+    //   return t
+    // },{})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </script>
+
+</body>
+
+</html>

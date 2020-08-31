@@ -10,6 +10,74 @@
 <body>
 
   <script>
+    let node = document.querySelector('*')
+
+    // function deepFirstSearch(node, nodeList = []) {
+    //   if (node) {
+    //     nodeList.push(node)
+    //     let children = node.children
+    //     for (let i = 0; i < children.length; i++) {
+    //       nodeList.push(...deepFirstSearch(children[i]))
+    //     }
+    //   }
+    //   return nodeList
+    // }
+    // let result = deepFirstSearch(node)
+
+    // function deepFirstSearch(node) {
+    //   let stack = [node], result = []
+    //   while (stack.length) {
+    //     let list = stack.pop()
+    //     result.push(list)
+    //     let children = list.children
+    //     for (let i = 0; i < children.length; i++) {
+    //       stack.push(children[i])
+    //     }
+    //   }
+    //   return result
+    // }
+    // function breadFirstSearch(node) {
+    //   let stack = [node], result = []
+    //   while (stack.length) {
+    //     let list = stack.shift()
+    //     result.push(list)
+    //     let children = list.children
+    //     for (let i = 0; i < children.length; i++) {
+    //       stack.push(children[i])
+    //     }
+    //   }
+    //   return result
+    // }
+    // let result = breadFirstSearch(node)
+
+    class lazyMan {
+      constructor(name){
+        this.tasks = []
+        this.name = name;
+        const task = ()=> {
+          console.log(`Hi this is ${name}`)
+          this.next()
+        }
+
+        this.tasks.push(task)
+        setTimeout(this.next,0)
+      }
+      next(){
+        const task = this.tasks.shift()
+        task && task();
+      }
+      sleep(){
+        
+      }
+
+    }
+
+
+
+
+
+
+
 
     // const SymbolPolyfill = function (description) {
     //   if (this instanceof SymbolPolyfill) throw new TypeError('Symbol is not a constructor')

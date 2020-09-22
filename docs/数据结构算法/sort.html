@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let arr = [11, 21, 3, 5, 9]
+
+    // 冒泡排序
+    // 注意外层循环，从最大值开始递减，内层是两两比较，所以外层>=2就可以停止
+    // 内层是两两比较，从0开始，比较inner和inner+1，因此，临界条件是inner+1>inner
+
+    // function bundleSort(arr) {
+    //   let len = arr.length
+    //   for (let outer = len; outer >= 2; outer--) {
+    //     for (let inner = 0; inner < outer - 1; inner++) {
+    //       if (arr[inner] > arr[inner + 1]) {
+    //         let temp = arr[inner + 1]
+    //         arr[inner + 1] = arr[inner]
+    //         arr[inner] = temp
+    //       }
+    //     }
+    //   }
+    //   return arr
+    // }
+
+    // 选择排序
+    //选择排序是从数组的开头开始，将第一个元素和其他位置作比较，检查完所有的元素后，最小的放在第一个位置，接下来开始从第二个元素开始
+
+    //外层循环的i表示第几轮，arr[i]表示当前轮次的最小值
+    //内层从开始，依次往后数，找到比开头小的互换位置
+
+    // function selectSort(arr) {
+    //   for (let i = 0; i < arr.length; i++) {
+    //     for (let j = i; j < arr.length; j++) {
+    //       if (arr[i] > arr[j]) {
+    //         [arr[i], arr[j]] = [arr[j], arr[i]]
+    //       }
+    //     }
+    //   }
+    //   console.log(arr)
+    //   return arr
+    // }
+
+    // selectSort(arr)
+
+
+    //快排
+    //找到一个数作为参考，比这个数大的放在右边，比它小的放在右边。然后再分别对左边右边的序列做相同操作
+    // 1、选择一个基准元素，将列表分割成两个子序列
+    // 2、对列表重新排序，将所有小于基准值的元素放在左边，所有大于基准值的元素放在右边
+
+    // function quickSort(arr) {
+    //   if (arr.length <= 1) {
+    //     return arr
+    //   }
+
+    //   let left = [], right = [], current = arr.splice(0, 1);
+    //   for (let i = 0; i < arr.length; i++) {
+    //     if (arr[i] < current) {
+    //       left.push(arr[i])
+    //     } else {
+    //       right.push(arr[i])
+    //     }
+    //   }
+    //   return quickSort(left).concat(current, quickSort(right))
+    // }
+
+
+    // flat
+
+    let arr = [[2], [[2, 3], [2]], 3, 4, [2]]
+    function flatten(arr) {
+      return arr.reduce((t, v) => (Array.isArray(v) ? t = t.concat(flatten(v)) : t.push(v), t), [])
+    }
+    flatten(arr)
+
+    arr.prototype.flat = function () {
+      this.toString().split(',').map(item => +item)
+    }
+
+    
+
+
+
+
+
+
+
+
+  </script>
+</body>
+
+</html>

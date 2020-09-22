@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    .item {
+      float: left;
+      width: 21%;
+      margin: 10px 2%;
+      border: 1px solid black;
+
+    }
+
+    .aaa {
+      width: 90%;
+      height: auto;
+      border: 1px solid black;
+    }
+  </style>
+  <title>Document</title>
+</head>
+
+<body>
+
+
+
+  <div style="height:50%;width:50%;border:1px solid black;">
+
+    <img src="./timg.jpeg" alt="" class="aaa">
+  </div>
+
+  <script>
+    class player {
+      constructor() {
+        // 初始化观察者列表
+        this.watchers = {}
+
+        //模拟2s发布一个play事件
+        setTimeout(() => {
+          this.publish('play', true)
+        }, 2000)
+
+        setTimeout(() => {
+          this.publish('pause', true)
+        }, 2000)
+      }
+      // 发布事件
+      publish(event, data) {
+        if (this.watchers[enent] && this.watchers[event].length) {
+          this.watchers[event].forEach(callback => {
+            this.watchers[event].forEach(callback => callback.bind(this)(data))
+          });
+        }
+      }
+
+      // 订阅事件
+      subscribe(event, callback) {
+        this.watchers[event] = this.watchers[event] || []
+        this.watchers[event].push(callback)
+      }
+
+      // 退订事件
+      unsubscribe(event = null, callback = null) {
+        if (callback) {
+          if (this.watchers[event] && this.watchers[event].length) {
+            this.watchers.splice(this.watchers[event].findIndex(cd => Object.is(cb, callback)), 1)
+          }
+        } else if (event) {
+          this.watchers[event] = []
+        } else {
+          this.watchers = {}
+        }
+
+      }
+
+    }
+
+
+    const player = new Player()
+
+    // player1
+    const player1 = (data) => { console.log(1, data, this) }
+    // player2
+    const player2 = (data) => { console.log(2, data, this) }
+
+
+    class Singleton {
+      constructor(name) {
+        this.name = name
+        this.instance = null
+      }
+
+      getName() {
+        console.log(this.name)
+      }
+
+      static getInstance(name) {
+        if (!this.instance) {
+          this.instance = new Singleton(name)
+        }
+        return this.instance
+      }
+    }
+
+    // 惰性包装实例
+    const getSingle = function (fn) {
+      let result
+      return function () {
+        return result || (result = fn.apply(this, arguments))
+      }
+    }
+
+
+    window.onload = () => { };
+
+    function printListFromTailToHead(head) {
+      const array = []
+
+      while (head) {
+        array.unshift(head.val)
+        head = head.next;
+      }
+      return array
+    }
+
+  </script>
+
+</body>
+
+</html>

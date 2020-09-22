@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+    Function.prototype.MyCall = function (context) {
+      var context = context || window;
+      context.fn = this
+      let args = [...arguments].slice(1)
+      let result = context.fn(args)
+      delete context.fn
+
+      return result
+    }
+
+    Function.prototype.myBind = function (oThis) {
+      let self = this
+      let args = [].slice.call(arguments, 1)
+
+      var fNOP = function () { };
+
+      let fBound = function () {
+        var bindArgs = [].slice.call(arguments)
+        return self.apply(this instanceof fNOP ? this : context, args.concat(bindArgs))
+      }
+
+      fNOP.prototype = this.prototype;
+      fBound.prototype = new fNOP();
+      return fBound
+    }
+  </script>
+</body>
+
+</html>

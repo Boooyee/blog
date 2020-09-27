@@ -98,8 +98,6 @@
 
 * X-Content-Type-Options（防止上传HTML内容被解析为网页）
 
-
-
 ### https/http2
 
 * http存在的问题
@@ -138,8 +136,8 @@
   - 弊端：必须保证私钥不能泄露。非对称加密性能损耗大，存在中间人攻击。
 
 * https握手过程
-  - client-hello阶段，浏览器解析域名获取IP默认与此Host 443端口进行连接。将支持的加密组件、Host头信息发送给服务器。附带随机数生成的session tick1
-  - server-hello阶段，根据发送的host寻找服务器证书，然后将服务器证书、加密方案、随机的session ticket发送给浏览器
+  - client-hello阶段，浏览器解析域名获取IP默认与此Host 443端口进行连接。将支持的加密组件、Host头信息发送给服务器。附带随机数生成的session ticket1
+  - server-hello阶段，根据发送的host寻找服务器证书，然后将服务器证书、加密方案、随机的session ticket2发送给浏览器
   - cipher-spec阶段，浏览器接到证书后验证有效性，若通过检查生成一份session ticket(3),通过返回的公钥，用协商的加密算法加密。返回给服务器。同时浏览器用session ticket(1) session ticket(2) session ticket(3)合成session key.
 
   服务器接到后，用私钥解密session ticket(3),同样合成session key。

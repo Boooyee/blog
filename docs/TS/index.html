@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+    let list = {
+      name: '一级菜单',
+      children: [
+        { children: [
+          { children: [], name: '二级菜单A' },
+        ], name: '二级菜单A' },
+        {
+          children: [
+            { children: null, name: '三级菜单A' },
+            { children: [], name: '三级菜单B' }
+          ], name: '二级菜单B'
+        }
+      ]
+    }
+
+
+    function deep(a) {
+      let children = a.children
+      console.log(children)
+
+      if (children && children.length) {
+        for (let i = 0; i < children.length; i++) {
+          deep(children[i])
+        }
+      } else {
+        a.children = null
+      }
+      return a
+    }
+
+    let b = deep(list)
+    console.log(b)
+  </script>
+
+
+</body>
+
+</html>

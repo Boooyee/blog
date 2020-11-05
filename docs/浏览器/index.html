@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+    // function getCookie(name) {
+    //   let strCookie = document.cookie;
+    //   let arrCookie = strCookie.split(';')
+    //   for (let i = 0; i < arrCookie.length; i++) {
+    //     let str = arrCookie[i].split('=')
+    //     if (name === str[0]) {
+    //       return str[1]
+    //     }
+    //   }
+    //   return ''
+    // }
+
+    // function addCookie(key, value, day, path, domain) {
+    //   // 1.处理默认保存的路径
+    //   var index = window.location.pathname.lastIndexOf("/")
+    //   var currentPath = window.location.pathname.slice(0, index);
+    //   path = path || currentPath;
+    //   // 2.处理默认保存的domain
+    //   domain = domain || document.domain;
+    //   // 3.处理默认的过期时间
+    //   if (!day) {
+    //     document.cookie = key + "=" + value + ";path=" + path + ";domain=" + domain + ";";
+    //   } else {
+    //     var date = new Date();
+    //     date.setDate(date.getDate() + day);
+    //     document.cookie = key + "=" + value + ";expires=" + date.toGMTString() + ";path=" + path + ";domain=" + domain + ";";
+    //   }
+    // }
+
+    function bundleSort(arr) {
+      let len = arr.length
+
+      for (let i = len - 1; i >= 2; i--) {
+        for (let inner = 0; inner < i - 1; inner++) {
+          let temp = arr[inner]
+          if (arr[inner] > arr[inner + 1]) {
+            arr[inner] = arr[inner + 1]
+            arr[inner + 1] = temp
+          }
+        }
+      }
+      return arr
+    }
+
+
+
+  </script>
+
+</body>
+
+</html>

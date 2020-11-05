@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // let curry = function (fn) {
+
+    //   let args = [].slice.call(arguments, 1)
+
+    //   return function () {
+    //     var newArgs = args.concat([].slice.call(arguments))
+    //     console.log(newArgs)
+    //     return fn.apply(this, newArgs)
+    //   }
+    // }
+
+    // function add(x, y) {
+    //   return x + y
+    // }
+    // let addCurry = curry(add,2)
+    // console.log(addCurry(1,2))
+
+    function sub_curry(fn) {
+      let args = [].slice.call(arguments, 1)
+      return function () {
+        return fn.apply(this, args.concat([].slice.call(arguments)))
+      }
+    }
+
+    function curry(fn, length) {
+      length = length || fn.length;
+      let slice = Array.prototype.slice;
+      return function () {
+        if (arguments.length < length) {
+          
+        } else {
+          return fn.apply(this, arguments)
+        }
+      }
+    }
+  </script>
+
+
+</body>
+
+</html>

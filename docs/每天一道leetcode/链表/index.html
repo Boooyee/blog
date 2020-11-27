@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+    let arr = [1, 2, 3, 4]
+
+    function reverse(arr) {
+      let left = 0
+
+      let right = arr.length - 1
+
+      while (left < right) {
+        [arr[left], arr[right]] = [arr[right], arr[left]]
+        left += 1
+        right -= 1
+      }
+      return arr
+    }
+    let a = reverse(arr)
+
+
+    function Node(element) {
+      this.value = element;
+      this.next = null
+    }
+
+  </script>
+
+</body>
+
+</html>

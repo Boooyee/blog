@@ -50,27 +50,28 @@
     // }
     // let result = breadFirstSearch(node)
 
-    class lazyMan {
-      constructor(name){
-        this.tasks = []
-        this.name = name;
-        const task = ()=> {
-          console.log(`Hi this is ${name}`)
-          this.next()
-        }
+    // class lazyMan {
+    //   constructor(name){
+    //     this.tasks = []
+    //     this.name = name;
+    //     const task = ()=> {
+    //       console.log(`Hi this is ${name}`)
+    //       this.next()
+    //     }
 
-        this.tasks.push(task)
-        setTimeout(this.next,0)
-      }
-      next(){
-        const task = this.tasks.shift()
-        task && task();
-      }
-      sleep(){
-        
-      }
+    //     this.tasks.push(task)
+    //     setTimeout(this.next,0)
+    //   }
+    //   next(){
+    //     const task = this.tasks.shift()
+    //     task && task();
+    //   }
+    //   sleep(){
 
-    }
+    //   }
+    // }
+
+
 
 
 
@@ -262,22 +263,39 @@
     // },{})
 
 
+    // function marketIterator(arr) {
+    //   let index = 0
+    //   return {
+    //     next: () => {
+    //       return nextIndex < array.length ?
+    //         { value: array[nextIndex++], done: false } :
+    //         { value: undefined, done: true }
+    //     }
+    //   }
+    // }
 
 
+    // // 遍历器生成函数
+    // function marketId() {
+    //   let index = 0
+    //   return {
+    //     next: () => {
+    //       return { value: index++, done: false }
+    //     }
+    //   }
+    // }
 
 
+    let obj = {
+      *[Symbol.iterator]() {
+        yield 'hello';
+        yield 'world'
+      }
+    }
 
-
-
-
-
-
-
-
-
-
-
-
+    for (let x of obj) {
+      console.log(x)
+    }
   </script>
 
 </body>

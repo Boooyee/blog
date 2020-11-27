@@ -39,19 +39,43 @@
     //   }
     // }
 
-    function bundleSort(arr) {
-      let len = arr.length
+    // function bundleSort(arr) {
+    //   let len = arr.length
 
-      for (let i = len - 1; i >= 2; i--) {
-        for (let inner = 0; inner < i - 1; inner++) {
-          let temp = arr[inner]
-          if (arr[inner] > arr[inner + 1]) {
-            arr[inner] = arr[inner + 1]
-            arr[inner + 1] = temp
-          }
+    //   for (let i = len - 1; i >= 2; i--) {
+    //     for (let inner = 0; inner < i - 1; inner++) {
+    //       let temp = arr[inner]
+    //       if (arr[inner] > arr[inner + 1]) {
+    //         arr[inner] = arr[inner + 1]
+    //         arr[inner + 1] = temp
+    //       }
+    //     }
+    //   }
+    //   return arr
+    // }
+    document.cookie = "_octo=GH1.1.1139618349.1571194018; _ga=GA1.2.690245211.1571194069; tz=Asia%2FShanghai"
+
+    function getCookie(name) {
+      let strCookie = "_octo=GH1.1.1139618349.1571194018; _ga=GA1.2.690245211.1571194069; tz=Asia%2FShanghai"
+      let arrCookie = strCookie.split(';')
+      for (let i = 0; i < arrCookie; i++) {
+        let str = arrCookie[i].split('=')
+        if (str[0] === name) {
+          return str[1]
         }
       }
-      return arr
+      return ''
+    }
+
+
+    function getCookie(name) {
+      let value = `; ${document.cookie}`
+      let parts = value.split(`; name`)
+      if (parts.length === 2) {
+        return parts.pop().split(';').shift()
+      } else {
+        return ''
+      }
     }
 
 

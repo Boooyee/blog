@@ -6,27 +6,6 @@ Transform：2D转换方法，允许旋转，缩放，倾斜或者平移给定元
 * scale：设置元素方法或缩小的倍数
 * translate：沿着X和Y轴移动元素
 
-### 垂直居中实现
-
-* 使用绝对定位和负外边距对块级元素进行垂直居中（需要知道被居中元素尺寸）
-
-* 使用绝对定位和transform
-
-``` 
-#child{
-  background:orange;
-  position:absolute;
-  top:50%;
-  transform: translate(0,-50%);
-}
-```
-
-这种方法好处是不需要知道被居中元素尺寸，因为transform中translate偏移量百分比就相当于元素自身尺寸。
-
-* flex布局
-
-* line-height对单行文本进行垂直居中
-
 ### position属性
 
 * static：position默认值
@@ -54,6 +33,14 @@ Transform：2D转换方法，允许旋转，缩放，倾斜或者平移给定元
   + 行内块元素（display:inline-block）
   + overflow不为visible的元素
 
+* 解决边距重叠问题
+
+  + 父子元素之间
+
+  + 相邻兄弟元素
+
+  + 空块元素
+
 ### 移动端1px解决
 
 产生原因：设备像素比DPR（默认缩放100%）时，设备像素和CSS像素比值。主流屏幕DPR=2，也就是说要实现物理像素1px，css只能设置0.5。
@@ -64,6 +51,7 @@ Transform：2D转换方法，允许旋转，缩放，倾斜或者平移给定元
 * 使用伪元素
 
 ``` 
+
 .setOnePx{
   position: relative;
   &::after{
@@ -85,6 +73,7 @@ Transform：2D转换方法，允许旋转，缩放，倾斜或者平移给定元
 * viewport + rem方案：通过设置缩放，让css像素等于真正的物理像素。
 
 ``` 
+
 const scale = 1 / window.devicePixelRatio;
     const viewport = document.querySelector('meta[name="viewport"]');
     if (!viewport) {
@@ -94,3 +83,57 @@ const scale = 1 / window.devicePixelRatio;
     }
     viewport.setAttribute('content', 'width=device-width,user-scalable=no,initial-scale=' + scale + ',maximum-scale=' + scale + ',minimum-scale=' + scale);
 ```
+
+### 水平垂直居中实现
+
+* 定宽高，使用定位+margin
+
+``` 
+
+.center{
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:500px;
+  height:500px;
+  margin-left:-250px;
+  margin-top:-250px;
+}
+```
+
+* 定位+transform
+
+``` 
+
+.center{
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:500px;
+  height:500px;
+  transform:translate3d(-50%,-50%,0)
+}
+```
+
+* 不定宽高
+
+``` 
+
+.center{
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate3d(-50%,-50%,0)
+}
+```
+
+### 分析比较opacity:0; visibility:hidden; display:none; 优劣和适用场景
+
+* 株连性：如果祖先元素opacity:0; 或者display:none; 子孙元素无论如何都不会出现。如果父元素设置visible:hidden; 子孙元素visible:visible; 那么就会显现出来。
+
+### 伪类和伪元素
+
+* CSS3中伪类用:, 用于选择处于特定状态的元素。比如选取这一类型第一个元素，鼠标悬浮在元素上面。表现像是向文档的某个部分添加了一个类一样。例如：hover、focus
+
+* CSS3中规定使用::, 表现的像是往文本中加入全新的html元素一样。`::before` `::after`伪元素与content属性共同使用，在CSS中被叫做生成内容。
+

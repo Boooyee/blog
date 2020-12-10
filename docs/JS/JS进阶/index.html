@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+    const STATUS_PENDING = 'pending'
+    const STATUS_FULFILLED = 'fulfilled'
+    const STATSU_REJECTED = 'rejected'
+
+    class myPromise {
+      constructor(executor) {
+
+        // pending为初始状态，可以转换成fulfilled和rejected
+        this.status = STATUS_PENDING
+        this.value = ''
+        this.reason = ''
+
+        let resolve = value => {
+          if (this.status === STATUS_PENDING) {
+            this.status = STATUS_FULFILLED
+            this.value = value
+          }
+        }
+
+        let reject = reason => {
+          if (this.status === STATUS_PENDING) {
+            this.status = STATSU_REJECTED
+            this.reason = reason
+          }
+        }
+
+        try {
+          executor(resolve, reject)
+        } catch (err) {
+          reject(err)
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>

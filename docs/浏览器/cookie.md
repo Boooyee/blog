@@ -163,6 +163,14 @@ function addCookie(key, value, day, path, domain) {
 }
 ```
 
-
 ### 最新Cookie属性（Chrome 87）
+
+### session localStorage sessionStorage
+
+* localStorage: HTML5提供的一个API，本质上是个hash表，存在于浏览器上的hash。生命周期是永久的，意味着除非用户在浏览器提供的UI上清除localStorage信息，否则这些信息将永久存在。
+
+* sessionStorage:生命周期为当前窗口或者标签页，一旦窗口或者标签页被永久关闭了，那么所有通过sessionStorage存储的数据也就被清空了
+
+* cookie:没有设置expires选项时，cookie生命周期仅限在当前会话中，关闭浏览器意味着这次会话结束。
+
 

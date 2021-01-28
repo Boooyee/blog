@@ -9,7 +9,7 @@
 
 <body>
   <script>
-    let arr = [11, 21, 3, 5, 9]
+    // let arr = [11, 21, 3, 5, 9]
 
     // 冒泡排序
     // 注意外层循环，从最大值开始递减，内层是两两比较，所以外层>=2就可以停止
@@ -71,27 +71,48 @@
     //   return quickSort(left).concat(current, quickSort(right))
     // }
 
+    // let str = '1+2*(3+4)+5'
 
-    // flat
+    // const str = 'abc5 dd10 dd1n' 
+    // // dd1n abc5 dd10
+    // function reverseStr(s, n){
+    //   // return s.split(' ').reverse().join(' ');
+    //   let arr = s.split(' ')
+    //   return arr.slice(-n).concat(arr.slice(0,-n)).join(' ')
+    // }
+    // let b = reverseStr(str,1)
+    // console.log(b)
 
-    let arr = [[2], [[2, 3], [2]], 3, 4, [2]]
-    function flatten(arr) {
-      return arr.reduce((t, v) => (Array.isArray(v) ? t = t.concat(flatten(v)) : t.push(v), t), [])
-    }
-    flatten(arr)
-
-    arr.prototype.flat = function () {
-      this.toString().split(',').map(item => +item)
-    }
+    (function aa(){
+      async function foo(){
+        console.log('foo')
+      }
+      async function bar(){
+        console.log('bar')
+        await foo()
+        console.log(222)
+      }
 
     
+      console.log('bar end')
+      console.log('script start')
 
+      setTimeout(function(){
+        console.log('setTimeout')
+      },0)
 
+      bar()
+      new Promise((resolve) => {
+        console.log('promise')
+        resolve()
+      }).then(() => {
+        console.log('promise end')
+      })
 
+      console.log('script end')
 
-
-
-
+    })()
+    // bar end ,script start,bar ,promise,script end, foo,222,promise end'
 
   </script>
 </body>

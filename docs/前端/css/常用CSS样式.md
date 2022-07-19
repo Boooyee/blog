@@ -33,3 +33,8 @@
   word-break:break-all;
 }
 ```
+
+### opacity和transparent区别
+- transparent是颜色的一种，这种颜色叫透明色
+- opacity用来设置元素的不透明级别
+
